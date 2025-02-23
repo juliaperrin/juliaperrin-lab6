@@ -36,10 +36,10 @@ public class Enigma{
            
            rotate();
            
-           System.out.println("Encrypted: " + originalChar + " | Outer: " + outerIndex +
-                   " | Middle: " + middleChar + " | Inner: " + decryptedChar); //DEBUG
-
-        }
+           System.out.println("DECRYPT: Encrypted '" + originalChar + "', OuterIndex1: " + outerIndex1 +
+                           ", MidChar: '" + midChar + "' → OuterIndex2: " + outerIndex2 +
+                           ", OuterChar: '" + outerChar + "', InnerIndex: " + innerIndex +
+                           ", Decrypted: '" + decryptedChar + "'");        }
         return decryptedMessage.toString();
     }
 
@@ -61,10 +61,10 @@ public class Enigma{
            encryptedMessage.append(encryptedChar);
            
            rotate(); //call rotate method to rotate after every encrypted character
-           System.out.println("Original: " + originalChar + " | Inner: " + innerIndex +
-                   " | Middle: " + middleChar + " | Outer: " + outerChar); //DEBUG
-
-
+           System.out.println("ENCRYPT: Original '" + originalChar + "', Inner Index: " + innerIndex +
+                           " OuterRotorChar: '" + outerRotorChar + "',Mid Index: " + midIndex +
+                           " MidRotorChar: '" + midRotorChar + "' ,Outer Index: " + outerIndex +
+                           " Encrypted: '" + encryptedChar + "'"); //DEBUG
         }
         
         return encryptedMessage.toString();
