@@ -35,6 +35,10 @@ public class Enigma{
            decryptedMessage.append(decryptedChar); 
            
            rotate();
+           
+           System.out.println("Encrypted: " + originalChar + " | Outer: " + outerIndex +
+                   " | Middle: " + middleChar + " | Inner: " + decryptedChar); //DEBUG
+
         }
         return decryptedMessage.toString();
     }
@@ -57,6 +61,9 @@ public class Enigma{
            encryptedMessage.append(encryptedChar);
            
            rotate(); //call rotate method to rotate after every encrypted character
+           System.out.println("Original: " + originalChar + " | Inner: " + innerIndex +
+                   " | Middle: " + middleChar + " | Outer: " + outerChar); //DEBUG
+
 
         }
         

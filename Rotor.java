@@ -14,10 +14,8 @@ public class Rotor {
     
     public boolean rotate(){
         //TODO
-        char char27 = rotorValues.charAt(26); //Find last character
-        rotorValues = char27 + rotorValues.substring(0, 26); //remove last character, add to beginning, shift everything to the right
-        return rotorValues.charAt(0) == startChar; //Returns true if the rotor is back at starting position
-               
+        rotorValues = rotorValues.substring(1) + rotorValues.charAt(0); //Left shift rotation
+        return rotorValues.charAt(0) == startChar;       
     }
     
 
