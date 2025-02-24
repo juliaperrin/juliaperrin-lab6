@@ -25,21 +25,16 @@ public class Enigma{
         StringBuilder decryptedMessage = new StringBuilder();
         for (int i = 0; i < messageLength; i++) {
            char originalChar = message.charAt(i); //gets current character in the message (pre-decryption)
-           int outerIndex1 = rotors[2].indexOf(originalChar); //finds index of character in outer rotor
-           char midChar = rotors[1].charAt(outerIndex1); //find the character on the middle rotor aligned with the encrypted character on the outer
-           int outerIndex2 = rotors[2].indexOf(midChar); //finds the position on the outer rotor for the previously found character
-           char outerChar = rotors[2].charAt(outerIndex2); //finds the character at that positionally aligns with the previous on the outer rotor
-           int innerIndex = rotors[0].indexOf(outerChar); //finds the index of the previously found character
-           char decryptedChar = rotors[0].charAt(innerIndex); //finds the decrypted character by finding the aligning 
+           int outerIndex = rotors[2].indexOf(originalChar); //finds index of character in outer rotor
+           char midChar = rotors[1].charAt(outerIndex); //find the character on the middle rotor aligned with the encrypted character on the outer
+           int midIndex = rotors[1].indexOf(midChar); //finds the position on the middle rotor for the previously found character
+           char decryptedChar = rotors[0].charAt(midIndex); //finds the decrypted character by finding the aligning 
            
            decryptedMessage.append(decryptedChar); 
            
            rotate();
            
-           System.out.println("DECRYPT: Encrypted '" + originalChar + "', OuterIndex1: " + outerIndex1 +
-                           ", MidChar: '" + midChar + "' → OuterIndex2: " + outerIndex2 +
-                           ", OuterChar: '" + outerChar + "', InnerIndex: " + innerIndex +
-                           ", Decrypted: '" + decryptedChar + "'");        }
+        }
         return decryptedMessage.toString();
     }
 
@@ -54,17 +49,12 @@ public class Enigma{
            int innerIndex = rotors[0].indexOf(originalChar); //gets index of where character is in the inner rotor
            char outerRotorChar = rotors[2].charAt(innerIndex); //finds the character at the same index in the outer rotor
            int midIndex = rotors[1].indexOf(outerRotorChar); //gets index of character from outer rotor on the middle rotor
-           char midRotorChar = rotors[1].charAt(midIndex); //Finds the character at that index on the middle rotor 
-           int outerIndex = rotors[2].indexOf(midRotorChar); //finds index on outer rotor of character from middle rotor
-           char encryptedChar = rotors[2].charAt(outerIndex); //finds the final encrypted character at the outer rotor
+           char encryptedChar = rotors[2].charAt(midIndex); //finds the final encrypted character at the outer rotor
            
            encryptedMessage.append(encryptedChar);
            
            rotate(); //call rotate method to rotate after every encrypted character
-           System.out.println("ENCRYPT: Original '" + originalChar + "', Inner Index: " + innerIndex +
-                           " OuterRotorChar: '" + outerRotorChar + "',Mid Index: " + midIndex +
-                           " MidRotorChar: '" + midRotorChar + "' ,Outer Index: " + outerIndex +
-                           " Encrypted: '" + encryptedChar + "'"); //DEBUG
+           
         }
         
         return encryptedMessage.toString();

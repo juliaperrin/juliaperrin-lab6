@@ -8,13 +8,16 @@ public class Rotor {
         this.rotorValues = new String(v);
         this.startChar = c;
         
-        while(!this.rotate());
+        while (rotorValues.charAt(0) != startChar) { //makes sure rotor starts at correct position
+           rotate();
+        }
+
             
     }
     
     public boolean rotate(){
         //TODO
-        rotorValues = rotorValues.substring(1) + rotorValues.charAt(0); //Left shift rotation
+        rotorValues = rotorValues.charAt(rotorValues.length() - 1) + rotorValues.substring(0, rotorValues.length() - 1);
         return rotorValues.charAt(0) == startChar;       
     }
     
@@ -27,8 +30,11 @@ public class Rotor {
 
     public char charAt(int idx){
         //TODO
-        char foundHere = rotorValues.charAt(idx);
-        return foundHere;
+        if (idx >= 0 && idx < rotorValues.length()) {
+           char foundHere = rotorValues.charAt(idx);
+           return foundHere;
+        }
+        throw new IllegalArgumentException("Index out of bounds: " + idx);
     }
 }
     
