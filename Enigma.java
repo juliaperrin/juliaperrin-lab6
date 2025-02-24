@@ -27,7 +27,7 @@ public class Enigma{
            char originalChar = message.charAt(i); //gets current character in the message (pre-decryption)
            int outerIndex = rotors[2].indexOf(originalChar); //finds index of character in outer rotor
            char midChar = rotors[1].charAt(outerIndex); //find the character on the middle rotor aligned with the encrypted character on the outer
-           int midIndex = rotors[1].indexOf(midChar); //finds the position on the middle rotor for the previously found character
+           int midIndex = rotors[2].indexOf(midChar); //finds the position on the outer rotor for the previously found character
            char decryptedChar = rotors[0].charAt(midIndex); //finds the decrypted character by finding the aligning 
            
            decryptedMessage.append(decryptedChar); 

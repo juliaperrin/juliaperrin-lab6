@@ -11,6 +11,7 @@ public class Rotor {
         while (rotorValues.charAt(0) != startChar) { //makes sure rotor starts at correct position
            rotate();
         }
+        System.out.println("Initialized rotor: " + rotorValues + " with start char: " + startChar);
 
             
     }
